@@ -36,11 +36,11 @@ class _HomeState extends State<Home> {
             label: 'Staff',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
+            icon: Icon(Icons.shop_rounded),
             label: 'Product',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
+            icon: Icon(Icons.widgets_sharp),
             label: 'Material',
           ),
         ],
