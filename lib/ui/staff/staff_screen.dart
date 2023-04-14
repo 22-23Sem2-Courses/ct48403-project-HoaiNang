@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../resource/coffeeTheme.dart';
 
-class Card2 extends StatelessWidget {
-  const Card2({super.key});
+class StaffScreen extends StatelessWidget {
+  const StaffScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class Card2 extends StatelessWidget {
                     right: 16,
                     child: Text(
                       'Recipe',
-                      style: FooderlichTheme.lightTextTheme.headline1,
+                      style: CoffeeTheme.lightTextTheme.headline1,
                     ),
                   ),
                   Positioned(
@@ -43,7 +43,7 @@ class Card2 extends StatelessWidget {
                       quarterTurns: 3,
                       child: Text(
                         'Smoothies',
-                        style: FooderlichTheme.lightTextTheme.headline1,
+                        style: CoffeeTheme.lightTextTheme.headline1,
                       ),
                     ),
                   )

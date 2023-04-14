@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../resource/coffeeTheme.dart';
 
-class Card1 extends StatelessWidget {
-  const Card1({super.key});
+class MaterialScreen extends StatelessWidget {
+  const MaterialScreen({super.key});
 
   final String category = 'Editor\'s Choice';
   final String title = 'The Art of Dough';
@@ -31,22 +31,21 @@ class Card1 extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Text(category, style: FooderlichTheme.darkTextTheme.bodyText1),
+            Text(category, style: CoffeeTheme.darkTextTheme.bodyText1),
             Positioned(
               top: 20,
-              child:
-                  Text(title, style: FooderlichTheme.darkTextTheme.headline2),
+              child: Text(title, style: CoffeeTheme.darkTextTheme.headline2),
             ),
             Positioned(
               bottom: 30,
               right: 0,
-              child: Text(description,
-                  style: FooderlichTheme.darkTextTheme.bodyText1),
+              child:
+                  Text(description, style: CoffeeTheme.darkTextTheme.bodyText1),
             ),
             Positioned(
               bottom: 10,
               right: 0,
-              child: Text(chef, style: FooderlichTheme.darkTextTheme.bodyText1),
+              child: Text(chef, style: CoffeeTheme.darkTextTheme.bodyText1),
             ),
           ],
         ),

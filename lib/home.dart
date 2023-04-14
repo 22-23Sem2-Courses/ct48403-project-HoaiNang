@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ui/material/material_screen.dart';
-import 'ui/staff/staff_screen.dart';
-import 'ui/products/products_screen.dart';
+import './ui/screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,9 +13,9 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = [
-    const Card1(),
-    const Card2(),
-    const Card3(),
+    const MaterialScreen(),
+    const ProductScreen(),
+    const StaffScreen(),
   ];
 
   @override
@@ -34,7 +32,7 @@ class _HomeState extends State<Home> {
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
+            icon: Icon(Icons.adb_outlined),
             label: 'Staff',
           ),
           BottomNavigationBarItem(

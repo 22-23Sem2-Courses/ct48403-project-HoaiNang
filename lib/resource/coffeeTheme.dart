@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FooderlichTheme {
+class CoffeeTheme {
   // 1
   static TextTheme lightTextTheme = TextTheme(
     // ignore: deprecated_member_use
