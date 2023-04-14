@@ -12,5 +12,5 @@ Học kỳ 2, Năm học 2022-2023
 
 **Lớp học phần**: CT48403
 
-**Tên dự án**: Quản lý quán cà phê
+**Tên dự án**: Quản lý quán cà phê.
 
