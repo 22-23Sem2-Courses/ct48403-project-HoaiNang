@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import '../../models/staff.dart';
 
-class StaffManager {
+class StaffManager with ChangeNotifier {
   final List<Staff> _items = [
     Staff(
         id: 'NV01',
@@ -66,4 +68,23 @@ class StaffManager {
   List<Staff> get items {
     return [..._items];
   }
+  void addStaff(Staff staff) {
+    _items.add(
+      // ignore: unnecessary_string_interpolations
+      staff.copyWith(id: 'p${DateTime.now().toIso8601String()}'),
+    );
+    notifyListeners();
+  }
+  void updateStaff(Staff staff) {
+    final index = _items.indexWhere((item) => item.id == staff.id);
+    _items[index] = staff;
+    notifyListeners();
+  }
+
+  void deleteStaff(Staff staff) {
+    final index = _items.indexWhere((item) => item.id == staff.id);
+    _items.removeAt(index);
+    notifyListeners();
+  }
+  
 }
