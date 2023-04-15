@@ -13,20 +13,20 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = [
-    const MaterialScreen(),
+    const MyHomePage(title: 'Staff List',),
     const ProductScreen(),
-    const StaffScreen(),
+    const MyHomePage1(title: 'Material List',),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Coffee Manager',
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Coffee Manager',
+      //     style: Theme.of(context).textTheme.headline6,
+      //   ),
+      // ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
