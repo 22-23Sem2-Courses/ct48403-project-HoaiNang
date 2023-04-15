@@ -17,30 +17,68 @@ class _MyHomePage1State extends State<MyHomePage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ListView.builder(
-        itemCount: MaterialManager().itemCount,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return MaterialDetailScreen(
-                       MaterialManager().items[index],
-                    );
-                  },
-                ),
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: ListView.builder(
+            itemCount: MaterialManager().itemCount,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MaterialDetailScreen(
+                          MaterialManager().items[index],
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Row(children: <Widget>[
+                  SizedBox(
+                      width: 300,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(MaterialManager().items[index].name),
+                          SizedBox(
+                              child: Row(children: [
+                            buildEditButton(context),
+                            buildDeleteButton(context),
+                          ]))
+                        ],
+                      ))
+                ]),
               );
             },
-          child: Text(
-            
-            MaterialManager().items[index].name));
-        },
+          ),
+        ));
+  }
+
+  Widget buildDeleteButton(BuildContext context) {
+    return IconButton(
+      icon: const Icon(
+        Icons.delete,
       ),
+      onPressed: () {
+        print('Delete a product');
+      },
+      color: Theme.of(context).colorScheme.error,
+    );
+  }
+
+  Widget buildEditButton(BuildContext context) {
+    return IconButton(
+      icon: const Icon(
+        Icons.edit,
+      ),
+      onPressed: () {
+        print('Go to edit product screen');
+      },
+      color: Theme.of(context).primaryColor,
     );
   }
 }

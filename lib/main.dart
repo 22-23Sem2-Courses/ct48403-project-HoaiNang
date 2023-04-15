@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myproject_app/resource/coffeeTheme.dart';
 import 'package:myproject_app/home.dart';
-import './ui/staff/staff_detail_screen.dart';
-import './ui/staff/staff_manager.dart';
-import './models/staff.dart';
+import 'package:myproject_app/ui/products/product_manager.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,14 +11,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Staff Manager',
-      theme: CoffeeTheme.light(),
-      home: const Home(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ProductManager(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: CoffeeTheme.light(),
+        home: const Home(),
+      ),
     );
   }
 }
-
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myproject_app/models/staff.dart';
 
 import '../../resource/coffeeTheme.dart';
 import './staff_manager.dart';
@@ -40,21 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     );
                   },
-                  child: Row(children: <Widget>[
-                    SizedBox(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(StaffManager().items[index].name),
-                            SizedBox(
-                                child: Row(children: [
-                              buildEditButton(context),
-                              buildDeleteButton(context),
-                            ]))
-                          ],
-                        ))
-                  ]),
+                  child: _buildItemCard(StaffManager().items[index]),
                 );
               },
             ),
@@ -85,6 +72,36 @@ class _MyHomePageState extends State<MyHomePage> {
         print('Go to edit product screen');
       },
       color: Theme.of(context).primaryColor,
+    );
+  }
+
+  Widget _buildItemCard(Staff staff) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                staff.name,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Palatino',
+                ),
+              ),
+              Row(
+                children: [
+                  buildEditButton(context),
+                  buildDeleteButton(context),
+                ],
+              )
+            ],
+          )),
     );
   }
 }
