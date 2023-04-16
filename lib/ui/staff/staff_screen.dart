@@ -7,16 +7,13 @@ import './staff_detail.dart';
 import './edit_staff_screen.dart';
 import './staff_item.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class StaffScreen extends StatefulWidget {
+  const StaffScreen({Key? key}) : super(key: key);
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StaffScreen> createState() => _StaffScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _StaffScreenState extends State<StaffScreen> {
   @override
   Widget build(BuildContext context) {
     final staffs = context.select<StaffManager, List<Staff>>(
@@ -61,57 +58,4 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   }
 
-//   Widget buildDeleteButton(BuildContext context) {
-//     return IconButton(
-//       icon: const Icon(
-//         Icons.delete,
-//       ),
-//       onPressed: () {
-//         print('Delete a product');
-//       },
-//       color: Theme.of(context).colorScheme.error,
-//     );
-//   }
-
-//   Widget buildEditButton(BuildContext context) {
-//     return IconButton(
-//       icon: const Icon(
-//         Icons.edit,
-//       ),
-//       onPressed: () {
-//         print('Go to edit product screen');
-//       },
-//       color: Theme.of(context).primaryColor,
-//     );
-//   }
-
-//   Widget _buildItemCard(Staff staff) {
-//     return Card(
-//       elevation: 2,
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.circular(15.0),
-//       ),
-//       child: Padding(
-//           padding: const EdgeInsets.all(16.0),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Text(
-//                 staff.name,
-//                 style: const TextStyle(
-//                   fontSize: 20,
-//                   fontWeight: FontWeight.w700,
-//                   fontFamily: 'Palatino',
-//                 ),
-//               ),
-//               Row(
-//                 children: [
-//                   buildEditButton(context),
-//                   buildDeleteButton(context),
-//                 ],
-//               )
-//             ],
-//           )),
-//     );
-//   }
 

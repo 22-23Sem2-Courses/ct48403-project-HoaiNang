@@ -1,39 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:myproject_app/models/staff.dart';
-import 'package:myproject_app/ui/staff/staff_manager.dart';
+import 'package:myproject_app/models/materials.dart';
+import 'package:myproject_app/ui/material/material_manager.dart';
 import 'package:provider/provider.dart';
-import './edit_staff_screen.dart';
+import './edit_material_screen.dart';
 
-class StaffDetail extends StatefulWidget {
-  final Staff staff;
+class MaterialDetail extends StatefulWidget {
+  final Materials materials;
 
-  const StaffDetail({super.key, required this.staff});
+  const MaterialDetail({super.key, required this.materials});
 
   @override
-  State<StaffDetail> createState() => _StaffDetailState();
+  State<MaterialDetail> createState() => _MaterialDetailState();
 }
 
-class _StaffDetailState extends State<StaffDetail> {
+class _MaterialDetailState extends State<MaterialDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Staff Detail',
+          'Material Detail',
           style: TextStyle(
             fontFamily: 'Palatino',
             fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 233, 111, 4),
+        backgroundColor: Color.fromARGB(255, 211, 4, 4),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 8.0,
           vertical: 20.0,
         ),
-        color: Colors.blue,
+        color: Colors.green,
         child: Column(
           children: <Widget>[
             Container(
@@ -41,7 +41,7 @@ class _StaffDetailState extends State<StaffDetail> {
                   border: Border.all(color: Colors.transparent, width: 0),
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    image: AssetImage(widget.staff.avt),
+                    image: AssetImage(widget.materials.image),
                     fit: BoxFit.cover,
                     filterQuality: FilterQuality.high,
                   ),
@@ -60,9 +60,9 @@ class _StaffDetailState extends State<StaffDetail> {
               height: 20,
             ),
             Text(
-              'Name: ${widget.staff.name}',
+              'Tên nguyên liệu: ${widget.materials.name}',
               style: const TextStyle(
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 fontFamily: 'Palatino',
                 decoration: TextDecoration.none,
@@ -70,13 +70,13 @@ class _StaffDetailState extends State<StaffDetail> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             Text(
-              'Phone: 0${widget.staff.phone}',
+              'Số lượng nhập vào: ${widget.materials.SoLuongNhap}',
               style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                   fontFamily: 'Palatino',
                   decoration: TextDecoration.none,
                   decorationColor: Colors.redAccent,
@@ -84,10 +84,10 @@ class _StaffDetailState extends State<StaffDetail> {
                   color: Colors.black),
             ),
             const SizedBox(
-              height: 25,
+              height: 20,
             ),
             Text(
-              'Address: ${widget.staff.address}',
+              'Số lượng còn lại: ${widget.materials.SoLuongConLai}',
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
@@ -100,7 +100,7 @@ class _StaffDetailState extends State<StaffDetail> {
               height: 20,
             ),
             Text(
-              'Email: ${widget.staff.email}',
+              'Đơn vị tính: ${widget.materials.DonViTinh}',
               style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -135,7 +135,7 @@ class _StaffDetailState extends State<StaffDetail> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditStaffScreen(widget.staff),
+                  builder: (context) => EditMaterialScreen(widget.materials),
                 ),
               );
             },
@@ -152,7 +152,7 @@ class _StaffDetailState extends State<StaffDetail> {
             ),
             backgroundColor: const Color.fromARGB(255, 43, 43, 43),
             onTap: () {
-              context.read<StaffManager>().deleteStaff(widget.staff);
+              context.read<MaterialManager>().deleteMaterial(widget.materials);
               Navigator.of(context).pop();
             },
             label: 'Delete',

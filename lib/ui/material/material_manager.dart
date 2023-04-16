@@ -1,6 +1,8 @@
-import '../../models/material.dart';
+import 'package:flutter/material.dart';
 
-class MaterialManager {
+import '../../models/materials.dart';
+
+class MaterialManager with ChangeNotifier{
   final List<Materials> _items = [
     Materials(
         id: 'NL01',
@@ -58,5 +60,23 @@ class MaterialManager {
 
   List<Materials> get items {
     return [..._items];
+  }
+  void addMaterial(Materials materials) {
+    _items.add(
+      // ignore: unnecessary_string_interpolations
+      materials.copyWith(id: 'p${DateTime.now().toIso8601String()}'),
+    );
+    notifyListeners();
+  }
+  void updateMaterial(Materials materials) {
+    final index = _items.indexWhere((item) => item.id == materials.id);
+    _items[index] = materials;
+    notifyListeners();
+  }
+
+  void deleteMaterial(Materials materials) {
+    final index = _items.indexWhere((item) => item.id == materials.id);
+    _items.removeAt(index);
+    notifyListeners();
   }
 }

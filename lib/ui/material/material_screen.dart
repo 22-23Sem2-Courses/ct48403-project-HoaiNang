@@ -1,84 +1,61 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../../resource/coffeeTheme.dart';
 import './material_manager.dart';
-import './material_detail_screen.dart';
+import './edit_material_screen.dart';
+import './material_detail.dart';
+import './material_item.dart';
+import 'package:myproject_app/models/materials.dart';
 
-class MyHomePage1 extends StatefulWidget {
-  const MyHomePage1({super.key, required this.title});
-
-  final String title;
-
+class MaterialScreen extends StatefulWidget {
+  const MaterialScreen({Key? key}) : super(key: key);
   @override
-  State<MyHomePage1> createState() => _MyHomePage1State();
+  State<MaterialScreen> createState() => _MaterialScreenState();
 }
 
-class _MyHomePage1State extends State<MyHomePage1> {
+class _MaterialScreenState extends State<MaterialScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: ListView.builder(
-            itemCount: MaterialManager().itemCount,
-            itemBuilder: (context, index) {
+    final materials = context.select<MaterialManager, List<Materials>>(
+        (MaterialManager) => MaterialManager.items);
+    return Consumer<MaterialManager>(
+      builder: (ctx, MaterialManager, child) {
+        return Scaffold(
+          body: ListView.builder(
+            itemCount: MaterialManager.itemCount,
+            itemBuilder: (cxt, i) {
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) {
-                        return MaterialDetailScreen(
-                          MaterialManager().items[index],
+                      builder: (ctx) {
+                        return MaterialDetail(
+                          materials: materials[i],
                         );
                       },
                     ),
                   );
                 },
-                child: Row(children: <Widget>[
-                  SizedBox(
-                      width: 300,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(MaterialManager().items[index].name),
-                          SizedBox(
-                              child: Row(children: [
-                            buildEditButton(context),
-                            buildDeleteButton(context),
-                          ]))
-                        ],
-                      ))
-                ]),
+                child: MaterialItem(materials: materials[i]),
               );
             },
           ),
-        ));
-  }
-
-  Widget buildDeleteButton(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.delete,
-      ),
-      onPressed: () {
-        print('Delete a product');
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditMaterialScreen(null),
+                ),
+              );
+            },
+          ),
+        );
       },
-      color: Theme.of(context).colorScheme.error,
     );
   }
-
-  Widget buildEditButton(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.edit,
-      ),
-      onPressed: () {
-        print('Go to edit product screen');
-      },
-      color: Theme.of(context).primaryColor,
-    );
   }
-}
+
+ 

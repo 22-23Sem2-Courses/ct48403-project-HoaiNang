@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:myproject_app/ui/staff/staff_manager.dart';
+import 'package:myproject_app/ui/material/material_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/staff.dart';
+import '../../models/materials.dart';
 import '../../resource/dialog.dart';
 
-class StaffItem extends StatelessWidget {
-  final Staff staff;
-  const StaffItem({
-    required this.staff,
+class MaterialItem extends StatelessWidget {
+  final Materials materials;
+  const MaterialItem({
+    required this.materials,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: ValueKey(staff.id),
+      key: ValueKey(materials.id),
       background: Container(
         color: Theme.of(context).colorScheme.error,
         alignment: Alignment.centerRight,
@@ -30,11 +30,11 @@ class StaffItem extends StatelessWidget {
       confirmDismiss: (direction) {
         return showConfirmDialog(
           context,
-          "Do you want to remove this staff?",
+          "Do you want to remove your material?",
         );
       },
       onDismissed: (direction) {
-        context.read<StaffManager>().deleteStaff(staff);
+        context.read<MaterialManager>().deleteMaterial(materials);
       },
       child: _buildItemCard(),
     );
@@ -54,7 +54,7 @@ class StaffItem extends StatelessWidget {
               height: 100,
               width: 100,
               child: Image(
-                image: AssetImage(staff.avt),
+                image: AssetImage(materials.image),
                 fit: BoxFit.cover,
               ),
             ),
@@ -66,17 +66,17 @@ class StaffItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  staff.name,
+                  materials.name,
                   style: const TextStyle(
-                    fontSize: 25,
+                    fontSize: 18,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Palatino',
                   ),
                 ),
-                Text(
-                  'Phone: ${staff.phone}',
-                  style: const TextStyle(
-                    fontSize: 18,
+                const Text(
+                  "Nguyên liệu đạt chuẩn chất lượng",
+                  style: TextStyle(
+                    fontSize: 12,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Palatino',
                   ),
