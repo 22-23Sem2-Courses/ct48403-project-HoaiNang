@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myproject_app/ui/bill/bill_screen.dart';
 
 import './ui/screen.dart';
 
@@ -16,6 +17,7 @@ class _HomeState extends State<Home> {
     const StaffScreen(),
     const ProductScreen(),
     const MaterialScreen(),
+    const BillScreen(),
   ];
 
   @override
@@ -42,6 +44,10 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(Icons.widgets_sharp),
             label: 'Material',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shop_2_outlined),
+            label: 'Bill',
           ),
         ],
         currentIndex: _selectedIndex,

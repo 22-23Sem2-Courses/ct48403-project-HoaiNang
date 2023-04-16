@@ -5,6 +5,7 @@ import 'package:myproject_app/ui/products/product_manager.dart';
 import 'package:provider/provider.dart';
 import './ui/staff/staff_manager.dart';
 import './ui/material/material_manager.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: CoffeeTheme.light(),
+        theme: CoffeeTheme.dark(),
         home: const Home(),
       ),
     );
