@@ -70,7 +70,6 @@ class StaffManager with ChangeNotifier {
   }
   void addStaff(Staff staff) {
     _items.add(
-      // ignore: unnecessary_string_interpolations
       staff.copyWith(id: 'p${DateTime.now().toIso8601String()}'),
     );
     notifyListeners();

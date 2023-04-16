@@ -26,14 +26,14 @@ class _MaterialDetailState extends State<MaterialDetail> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 211, 4, 4),
+        backgroundColor: Color.fromARGB(255, 2, 153, 20),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 8.0,
           vertical: 20.0,
         ),
-        color: Colors.green,
+        color: Color.fromARGB(255, 55, 230, 61),
         child: Column(
           children: <Widget>[
             Container(

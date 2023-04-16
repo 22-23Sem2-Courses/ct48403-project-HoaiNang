@@ -14,7 +14,14 @@ class BillDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(bill.id as String),
+          title: Text(
+            bill.id as String,
+            style: const TextStyle(
+              fontFamily: 'Palatino',
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          backgroundColor: Color.fromARGB(255, 170, 20, 220),
         ),
         body: SingleChildScrollView(
             child: Column(

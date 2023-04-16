@@ -68,7 +68,7 @@ class StaffItem extends StatelessWidget {
                 Text(
                   staff.name,
                   style: const TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Palatino',
                   ),

@@ -26,7 +26,7 @@ class _StaffDetailState extends State<StaffDetail> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 233, 111, 4),
+        backgroundColor: Color.fromARGB(255, 38, 3, 167),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
@@ -112,57 +112,6 @@ class _StaffDetailState extends State<StaffDetail> {
           ],
         ),
       ),
-      floatingActionButton: Menu(),
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  Widget Menu() {
-    return SpeedDial(
-      animatedIcon: AnimatedIcons.menu_close,
-      animatedIconTheme: const IconThemeData(size: 22),
-      backgroundColor: const Color.fromARGB(255, 43, 43, 43),
-      visible: true,
-      curve: Curves.bounceIn,
-      children: [
-        SpeedDialChild(
-            child: const Icon(
-              Icons.edit_note,
-              color: Colors.white,
-            ),
-            backgroundColor: const Color.fromARGB(255, 43, 43, 43),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditStaffScreen(widget.staff),
-                ),
-              );
-            },
-            label: 'Edit',
-            labelStyle: const TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-                fontSize: 16.0),
-            labelBackgroundColor: const Color.fromARGB(255, 43, 43, 43)),
-        SpeedDialChild(
-            child: const Icon(
-              Icons.delete_outline_rounded,
-              color: Colors.white,
-            ),
-            backgroundColor: const Color.fromARGB(255, 43, 43, 43),
-            onTap: () {
-              context.read<StaffManager>().deleteStaff(widget.staff);
-              Navigator.of(context).pop();
-            },
-            label: 'Delete',
-            labelStyle: const TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-                fontSize: 16.0),
-            labelBackgroundColor: const Color.fromARGB(255, 43, 43, 43))
-      ],
     );
   }
 }
-
