@@ -1,55 +1,61 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../../resource/coffeeTheme.dart';
+import './material_manager.dart';
+import './edit_material_screen.dart';
+import './material_detail.dart';
+import './material_item.dart';
+import 'package:myproject_app/models/materials.dart';
 
-class MaterialScreen extends StatelessWidget {
-  const MaterialScreen({super.key});
+class MaterialScreen extends StatefulWidget {
+  const MaterialScreen({Key? key}) : super(key: key);
+  @override
+  State<MaterialScreen> createState() => _MaterialScreenState();
+}
 
-  final String category = 'Editor\'s Choice';
-  final String title = 'The Art of Dough';
-  final String description = 'Learn to make the perfect bread.';
-  final String chef = 'Ray Wenderlich';
-
+class _MaterialScreenState extends State<MaterialScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        constraints: const BoxConstraints.expand(
-          width: 350,
-          height: 450,
-        ),
-        decoration: const BoxDecoration(
-          color: Colors.amber,
-          image: DecorationImage(
-            image: AssetImage('assets/mag1.png'),
-            fit: BoxFit.cover,
+    final materials = context.select<MaterialManager, List<Materials>>(
+        (MaterialManager) => MaterialManager.items);
+    return Consumer<MaterialManager>(
+      builder: (ctx, MaterialManager, child) {
+        return Scaffold(
+          body: ListView.builder(
+            itemCount: MaterialManager.itemCount,
+            itemBuilder: (cxt, i) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) {
+                        return MaterialDetail(
+                          materials: materials[i],
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: MaterialItem(materials: materials[i]),
+              );
+            },
           ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditMaterialScreen(null),
+                ),
+              );
+            },
           ),
-        ),
-        child: Stack(
-          children: [
-            Text(category, style: CoffeeTheme.darkTextTheme.bodyText1),
-            Positioned(
-              top: 20,
-              child: Text(title, style: CoffeeTheme.darkTextTheme.headline2),
-            ),
-            Positioned(
-              bottom: 30,
-              right: 0,
-              child:
-                  Text(description, style: CoffeeTheme.darkTextTheme.bodyText1),
-            ),
-            Positioned(
-              bottom: 10,
-              right: 0,
-              child: Text(chef, style: CoffeeTheme.darkTextTheme.bodyText1),
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
-}
+  }
+
+ 

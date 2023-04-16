@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:myproject_app/ui/products/product_manager.dart';
+import 'package:myproject_app/ui/material/material_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/product_model.dart';
+import '../../models/materials.dart';
 import '../../resource/dialog.dart';
 
-class ProductItem extends StatelessWidget {
-  final Product product;
-  const ProductItem({
-    required this.product,
+class MaterialItem extends StatelessWidget {
+  final Materials materials;
+  const MaterialItem({
+    required this.materials,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: ValueKey(product.id),
+      key: ValueKey(materials.id),
       background: Container(
         color: Theme.of(context).colorScheme.error,
         alignment: Alignment.centerRight,
@@ -30,11 +30,11 @@ class ProductItem extends StatelessWidget {
       confirmDismiss: (direction) {
         return showConfirmDialog(
           context,
-          "Do you want to remove your product!!",
+          "Do you want to remove your material?",
         );
       },
       onDismissed: (direction) {
-        context.read<ProductManager>().deleteProduct(product);
+        context.read<MaterialManager>().deleteMaterial(materials);
       },
       child: _buildItemCard(),
     );
@@ -54,38 +54,35 @@ class ProductItem extends StatelessWidget {
               height: 100,
               width: 100,
               child: Image(
-                image: AssetImage(product.imgUrl),
+                image: AssetImage(materials.image),
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
               width: 15,
             ),
-            SizedBox(
-              width: 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    style: const TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Palatino',
-                    ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  materials.name,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Palatino',
                   ),
-                  Text(
-                    'Price: ${product.price}\$',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Palatino',
-                    ),
-                  )
-                ],
-              ),
-            ),
+                ),
+                const Text(
+                  "Nguyên liệu đạt chuẩn chất lượng",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Palatino',
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),

@@ -26,3 +26,5 @@ flutter:
    uses-material-design: true
    assets:
       - assets/product/
+      - assets/images/avt/
+      - assets/images/material/

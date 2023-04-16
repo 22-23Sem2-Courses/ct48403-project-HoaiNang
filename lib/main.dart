@@ -4,6 +4,9 @@ import 'package:myproject_app/home.dart';
 import 'package:myproject_app/ui/products/product_manager.dart';
 import 'package:provider/provider.dart';
 
+import './ui/staff/staff_manager.dart';
+import './ui/material/material_manager.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,6 +21,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => ProductManager(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => StaffManager(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => MaterialManager(),
         ),
       ],
       child: MaterialApp(

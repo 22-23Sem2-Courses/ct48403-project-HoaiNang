@@ -13,9 +13,9 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = [
-    const MaterialScreen(),
-    const ProductScreen(),
     const StaffScreen(),
+    const ProductScreen(),
+    const MaterialScreen(),
   ];
 
   @override
