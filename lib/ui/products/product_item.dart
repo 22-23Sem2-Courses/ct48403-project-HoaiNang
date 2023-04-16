@@ -70,7 +70,7 @@ class ProductItem extends StatelessWidget {
                   Text(
                     product.name,
                     style: const TextStyle(
-                      fontSize: 21,
+                      fontSize: 25,
                       fontWeight: FontWeight.w700,
                       fontFamily: 'Palatino',
                     ),
@@ -85,7 +85,7 @@ class ProductItem extends StatelessWidget {
                   )
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
