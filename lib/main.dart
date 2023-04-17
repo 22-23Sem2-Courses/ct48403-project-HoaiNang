@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myproject_app/resource/coffeeTheme.dart';
 import 'package:myproject_app/home.dart';
+import 'package:myproject_app/ui/bill/bill_manager.dart';
 import 'package:myproject_app/ui/products/product_manager.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => MaterialManager(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => BillManager(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
