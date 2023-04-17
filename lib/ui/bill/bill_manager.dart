@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import '../../models/bill.dart';
+import '../../models/bill_model.dart';
 
-class BillManager {
+class BillManager with ChangeNotifier {
   final List<Bill> _items = [
     Bill(
       id: 'HD01',
@@ -61,11 +61,17 @@ class BillManager {
       ThanhTien: 19.00,
     ),
   ];
-  int get itemCount {
+  int get billCount {
     return _items.length;
   }
 
-  List<Bill> get items {
+  List<Bill> get bills {
     return [..._items];
+  }
+
+  void deleteBill(Bill bill) {
+    final index = _items.indexWhere((item) => item.id == bill.id);
+    _items.removeAt(index);
+    notifyListeners();
   }
 }
