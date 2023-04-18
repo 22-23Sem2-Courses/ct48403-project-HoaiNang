@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => ProductManager(),
         ),
-        ChangeNotifierProvider(
-          create: (ctx) => StaffManager(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (ctx) => StaffManager(),
+        // ),
         ChangeNotifierProvider(
           create: (ctx) => MaterialManager(),
         ),

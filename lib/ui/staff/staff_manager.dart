@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:myproject_app/ui/staff/staff_item.dart';
 import '../../models/staff.dart';
 
-class StaffManager with ChangeNotifier {
-  final List<Staff> _items = [
+  var staffs = [
     Staff(
         id: 'NV01',
         name: 'Nguyen Van A',
@@ -61,29 +61,29 @@ class StaffManager with ChangeNotifier {
         email: 'h123@gmail.com',
         avt: 'assets/images/avt/avt-8.jpg'),
   ];
-  int get itemCount {
-    return _items.length;
-  }
 
-  List<Staff> get items {
-    return [..._items];
-  }
-  void addStaff(Staff staff) {
-    _items.add(
-      staff.copyWith(id: 'p${DateTime.now().toIso8601String()}'),
-    );
-    notifyListeners();
-  }
-  void updateStaff(Staff staff) {
-    final index = _items.indexWhere((item) => item.id == staff.id);
-    _items[index] = staff;
-    notifyListeners();
-  }
+  // int get itemCount {
+  //   return _items.length;
+  // }
 
-  void deleteStaff(Staff staff) {
-    final index = _items.indexWhere((item) => item.id == staff.id);
-    _items.removeAt(index);
-    notifyListeners();
-  }
-  
-}
+  // List<Staff> get items {
+  //   return [..._items];
+  // }
+  // void addStaff(Staff staff) {
+  //   _items.add(
+  //     staff.copyWith(id: 'p${DateTime.now().toIso8601String()}'),
+  //   );
+  //   notifyListeners();
+  // }
+  // void updateStaff(Staff staff) {
+  //   final index = _items.indexWhere((item) => item.id == staff.id);
+  //   _items[index] = staff;
+  //   notifyListeners();
+  // }
+
+  // void deleteStaff(Staff staff) {
+  //   final index = _items.indexWhere((item) => item.id == staff.id);
+  //   _items.removeAt(index);
+  //   notifyListeners();
+  // }
+
